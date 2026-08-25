@@ -1,0 +1,528 @@
+/* --- Variáveis Globais e Reset --- */
+:root {
+    --bg-main: #0a0a0a;       /* Fundo Principal (Quase preto) */
+    --bg-secondary: #111111;  /* Fundo Secundário */
+    --card-glass: rgba(255, 255, 255, 0.03); /* Vidro translúcido */
+    --border-glass: rgba(255, 255, 255, 0.08);
+    
+    /* Cores de Destaque (Neon) */
+    --primary: #00ffbd;       /* Verde Neon */
+    --secondary: #7b2cbf;     /* Roxo para gradientes */
+    
+    /* Tipografia */
+    --text-light: #ffffff;
+    --text-gray: #b3b3b3;
+    
+    --section-spacing: 100px;
+    --border-radius: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-gray);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* --- Utilitários e Tipografia --- */
+h1, h2, h3, h4 {
+    color: var(--text-light);
+    font-weight: 700;
+}
+
+h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
+h2 { font-size: 2.5rem; margin-bottom: 15px; }
+h3 { font-size: 1.5rem; margin-bottom: 10px; }
+p { margin-bottom: 20px; }
+
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+ul { list-style: none; }
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-padding { padding: var(--section-spacing) 0; }
+.bg-darker { background-color: var(--bg-secondary); }
+
+/* Destaque com gradiente no texto */
+.highlight, .section-title span, .logo span {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section-title {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.section-subtitle {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 60px auto;
+}
+
+/* Grids Utilitários */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+
+/* --- Componentes: Botões --- */
+.btn {
+    display: inline-block;
+    padding: 12px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: var(--bg-main);
+    box-shadow: 0 0 15px rgba(0, 255, 189, 0.2);
+    border: 2px solid var(--primary);
+}
+
+.btn-primary:hover {
+    background: transparent;
+    color: var(--primary);
+    box-shadow: 0 0 30px rgba(0, 255, 189, 0.4);
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    border: 2px solid var(--border-glass);
+    color: var(--text-light);
+    margin-left: 20px;
+}
+
+.btn-outline:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.btn-sm {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    background: var(--primary);
+    color: var(--bg-main);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn-outline-sm {
+    background: transparent;
+    border: 1px solid var(--border-glass);
+    color: var(--text-light);
+}
+.btn-outline-sm:hover { border-color: var(--primary); color: var(--primary); }
+
+
+/* --- Componentes: Glass Cards (O Efeito Principal) --- */
+.glass-card {
+    background: var(--card-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--border-radius);
+    padding: 40px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 255, 189, 0.1);
+}
+
+/* --- Navegação --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    z-index: 1000;
+    background: rgba(10, 10, 10, 0.8); /* Fundo semi-transparente */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-glass);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-light);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover { color: var(--primary); }
+.nav-links a:hover::after { width: 100%; }
+
+.language-toggle {
+    color: var(--text-light);
+    font-weight: bold;
+    border: 1px solid var(--border-glass);
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+/* --- Hero Section --- */
+.hero {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
+        url('./images/hero.png'); /* AJUSTE O CAMINHO */
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Altura total da tela */
+
+    /* Estilizando o texto para garantir contraste */
+    color: #ffffff; /* Texto branco */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-attachment: fixed;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.hero h1 {
+    /* Um leve brilho no texto ajuda a destacar contra o fundo neon */
+    text-shadow: 0 0 20px rgba(0, 255, 189, 0.5);
+}
+
+.hero h4 {
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.hero p { font-size: 1.2rem; max-width: 600px; margin-bottom: 40px; }
+
+/* Efeito de "Brilho" no fundo do Hero */
+.hero-glow {
+    position: absolute;
+    top: 50%;
+    right: -10%;
+    width: 40vw;
+    height: 40vw;
+    background: radial-gradient(circle, rgba(0,255,189,0.2) 0%, rgba(123,44,191,0.1) 50%, rgba(0,0,0,0) 70%);
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 1;
+    transform: translateY(-50%);
+    opacity: 0.7;
+}
+
+/* --- Serviços Específicos --- */
+.service-icon {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 25px;
+}
+
+/* --- Habilidades Específicas --- */
+.skill-category h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.skill-category h3 i { color: var(--primary); font-size: 1.2rem; }
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tags span {
+    background: var(--card-glass);
+    border: 1px solid var(--border-glass);
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.skill-tags span:hover {
+    border-color: var(--primary);
+    background: rgba(0, 255, 189, 0.1);
+    color: var(--text-light);
+    transform: scale(1.05);
+}
+
+/* --- Projetos Específicos --- */
+.project-card { padding: 0; overflow: hidden; }
+
+.project-image {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.project-card:hover .project-image img { transform: scale(1.1); }
+
+.project-info { padding: 30px; }
+.project-info h3 { font-size: 1.3rem; }
+
+.tech-stack {
+    margin: 15px 0;
+    display: flex;
+    gap: 10px;
+    font-size: 0.8rem;
+}
+
+.tech-stack span { color: var(--primary); font-weight: 600; }
+
+.project-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* --- Sobre Mim Específico --- */
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-image {
+    position: relative;
+    border-radius: var(--border-radius);
+    z-index: 1;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    filter: grayscale(50%);
+    transition: 0.5s;
+}
+.about-image:hover img { filter: grayscale(0%); }
+
+/* Borda brilhante atrás da foto */
+.image-border {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--primary);
+    border-radius: var(--border-radius);
+    z-index: -1;
+    transition: 0.3s;
+}
+.about-image:hover .image-border { top: 10px; left: 10px; }
+
+.about-details h4 { margin-bottom: 15px; }
+.about-details ul li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+.about-details ul li::before {
+    content: '▹';
+    color: var(--primary);
+    margin-right: 10px;
+}
+
+/* --- Timeline de Experiência --- */
+.timeline {
+    max-width: 800px;
+    margin: 60px auto 0;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: var(--border-glass);
+}
+
+.timeline-item {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 30px;
+    position: relative;
+    margin-bottom: 50px;
+    width: 50%;
+}
+
+.timeline-item:nth-child(even) {
+    align-self: flex-end;
+    justify-content: flex-start;
+    padding-left: 30px;
+    padding-right: 0;
+    left: 50%;
+}
+
+.timeline-dot {
+    position: absolute;
+    top: 20px;
+    right: -8px;
+    width: 16px;
+    height: 16px;
+    background: var(--primary);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--primary);
+}
+.timeline-item:nth-child(even) .timeline-dot { right: auto; left: -8px; }
+
+.timeline-date {
+    position: absolute;
+    top: 20px;
+    right: -160px;
+    font-weight: 600;
+    color: var(--primary);
+    width: 120px;
+}
+.timeline-item:nth-child(even) .timeline-date { right: auto; left: -160px; text-align: right;}
+
+/* --- Contato --- */
+.contact-wrapper { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; }
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+.info-item i {
+    font-size: 1.5rem;
+    color: var(--primary);
+    background: rgba(0, 255, 189, 0.1);
+    padding: 15px;
+    border-radius: 50%;
+}
+
+.form-group { margin-bottom: 20px; }
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--border-glass);
+    border-radius: 8px;
+    color: var(--text-light);
+    font-family: inherit;
+    transition: 0.3s;
+}
+.contact-form input:focus, .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 10px rgba(0, 255, 189, 0.1);
+}
+
+/* --- Footer --- */
+.footer {
+    padding: 30px 0;
+    text-align: center;
+    background: var(--bg-main);
+    border-top: 1px solid var(--border-glass);
+    font-size: 0.9rem;
+}
+.social-links {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.social-links a {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+}
+.social-links a:hover { color: var(--primary); }
+
+
+/* --- CLASSE DE ANIMAÇÃO (Essencial) --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Transição mais suave */
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Responsividade Básica --- */
+@media (max-width: 992px) {
+    h1 { font-size: 2.8rem; }
+    .grid-3, .grid-2, .about-container, .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
+    .nav-links { display: none; } /* Menu hambúrguer precisaria de JS extra, ocultando por enquanto */
+    .hero-glow { width: 70vw; height: 70vw; right: -30%; }
+    .about-image { grid-row: 1; }
+    .timeline::before { left: 0; }
+    .timeline-item, .timeline-item:nth-child(even) { width: 100%; left: 0; padding-left: 30px; padding-right: 0; }
+    .timeline-dot, .timeline-item:nth-child(even) .timeline-dot { left: -8px; right: auto;}
+    .timeline-date, .timeline-item:nth-child(even) .timeline-date { position: relative; top: 0; left: 0; right: 0; margin-bottom: 10px; text-align: left;}
+}

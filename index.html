@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas Ventavele Ribeiro | Full Stack Developer Sênior</title>
+    <meta name="description" content="Desenvolvedor Full Stack Sênior especializado em sistemas SaaS, IA e automação. 5+ anos de experiência, 10+ sistemas em produção.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Lucas Ventavele Ribeiro | Full Stack Developer">
+    <meta property="og:description" content="Desenvolvedor Full Stack Sênior especializado em sistemas SaaS, IA e automação.">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        /* Badge de destaque nos projetos */
+        .project-badge {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: var(--primary);
+            color: var(--bg-main);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+        .project-image { position: relative; }
+
+        /* Skills com ícone de categoria + cor por grupo */
+        .skill-category { background: var(--card-glass); border: 1px solid var(--border-glass); border-radius: var(--border-radius); padding: 30px; transition: 0.3s; }
+        .skill-category:hover { border-color: var(--primary); }
+
+        /* Timeline badge atual */
+        .badge-atual {
+            display: inline-block;
+            background: rgba(0,255,189,0.15);
+            color: var(--primary);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            border: 1px solid var(--primary);
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        /* Projetos grid 2+2 */
+        .projects-grid-main { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .projects-grid-side { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 30px; }
+
+        @media (max-width: 992px) {
+            .projects-grid-main, .projects-grid-side { grid-template-columns: 1fr; }
+        }
+
+        /* Stats no hero */
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+        .hero-stat span { display: block; font-size: 1.8rem; font-weight: 700; color: var(--primary); }
+        .hero-stat p { font-size: 0.85rem; margin: 0; color: var(--text-gray); }
+
+        /* Skills grid 3 colunas */
+        .skills-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+        @media (max-width: 992px) { .skills-grid-3 { grid-template-columns: 1fr; } }
+
+        /* Status badge */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0,255,189,0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .status-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="logo">Lucas<span>.Dev</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projetos</a></li>
+                <li><a href="#experience">Experiência</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+            <div class="language-toggle">
+                <a href="https://github.com/neverleans" target="_blank" style="color:inherit;"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ── HERO ─────────────────────────────────────────────────── -->
+    <section id="home" class="hero">
+        <div class="container hero-content reveal">
+            <div class="status-badge">Aberto a projetos paralelo</div>
+            <h4>Desenvolvedor Full Stack Sênior</h4>
+            <h1>Sistemas <span class="highlight">complexos</span>, soluções <span class="highlight">elegantes</span>.</h1>
+            <p>Especialista em arquitetura de sistemas SaaS, automação com IA e aplicações em tempo real. Do back-end ao front-end — do código ao deploy em produção.</p>
+
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">Ver Projetos <i class="fas fa-arrow-right"></i></a>
+                <a href="#contact" class="btn btn-outline">Fale Comigo</a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span>5+</span>
+                    <p>Anos de experiência</p>
+                </div>
+                <div class="hero-stat">
+                    <span>10+</span>
+                    <p>Sistemas em produção</p>
+                </div>
+                <div class="hero-stat">
+                    <span>25+</span>
+                    <p>Tecnologias no stack</p>
+                </div>
+            </div>
+        </div>
+        <div class="hero-glow"></div>
+    </section>
+
+    <!-- ── SKILLS ────────────────────────────────────────────────── -->
+    <section id="skills" class="section-padding bg-darker">
+        <div class="container">
+            <h2 class="section-title reveal">Stack <span>Técnica</span></h2>
+            <p class="section-subtitle reveal">Tecnologias que uso no dia a dia — do código à infraestrutura.</p>
+
+            <div class="skills-grid-3">
+                <div class="skill-category reveal">
+                    <h3><i class="fas fa-globe"></i> Front-End</h3>
+                    <div class="skill-tags">
+                        <span>React</span><span>Next.js</span><span>Angular</span>
+                        <span>TypeScript</span><span>JavaScript</span>
+                        <span>HTML5</span><span>CSS3</span><span>TailwindCSS</span>
+                    </div>
+                </div>
+                <div class="skill-category reveal">
+                    <h3><i class="fas fa-server"></i> Back-End</h3>
+                    <div class="skill-tags">
+                        <span>Node.js</span><span>NestJS</span>
+                        <span>Laravel (PHP)</span><span>REST APIs</span>
+                        <span>tRPC</span><span>Socket.io</span><span>Baileys</span>
+                    </div>
+                </div>
+                <div class="skill-category reveal">
+                    <h3><i class="fas fa-database"></i> Banco de Dados</h3>
+                    <div class="skill-tags">
+                        <span>PostgreSQL</span><span>MySQL</span>
+                        <span>Redis</span><span>Firebase</span>
+                    </div>
+                </div>
+                <div class="skill-category reveal">
+                    <h3><i class="fas fa-brain"></i> IA & Automação</h3>
+                    <div class="skill-tags">
+                        <span>Anthropic SDK</span><span>BullMQ</span>
+                        <span>OpenAI API</span><span>Bot WhatsApp</span>
+                    </div>
+                </div>
+                <div class="skill-category reveal">
+                    <h3><i class="fas fa-cloud"></i> DevOps / Infra</h3>
+                    <div class="skill-tags">
+                        <span>Docker</span><span>Docker Compose</span>
+                        <span>VPS Ubuntu</span><span>CI/CD</span>
+                        <span>Sentry</span><span>Cloudflare</span>
+                    </div>
+                </div>
+                <div class="skill-category reveal">
+                    <h3><i class="fas fa-desktop"></i> Desktop & Mobile</h3>
+                    <div class="skill-tags">
+                        <span>Electron</span><span>PWA</span>
+                        <span>WebRTC</span><span>Shadcn UI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── PROJETOS ──────────────────────────────────────────────── -->
+    <section id="projects" class="section-padding">
+        <div class="container">
+            <h2 class="section-title reveal">Projetos em <span>Destaque</span></h2>
+            <p class="section-subtitle reveal">Sistemas que desenvolvi do zero — da arquitetura ao deploy.</p>
+
+            <!-- Projetos principais (grandes) -->
+            <div class="projects-grid-main">
+
+                <div class="project-card glass-card reveal">
+                    <div class="project-image">
+                        <span class="project-badge">SaaS · Produção</span>
+                        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 200px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fab fa-whatsapp" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Nexus — Plataforma WhatsApp Multi-Atendente</h3>
+                        <p>Sistema SaaS multi-tenant com automação de IA, chat em tempo real via Socket.io, filas de atendimento, analytics e broadcast. Integração com Baileys e API Cloud Meta.</p>
+                        <div class="tech-stack">
+                            <span>React</span><span>tRPC</span><span>NestJS</span><span>MySQL</span><span>Redis</span><span>Docker</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/neverleans/nexus" target="_blank" class="btn-sm"><i class="fab fa-github"></i> Ver Código</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card glass-card reveal">
+                    <div class="project-image">
+                        <span class="project-badge">SaaS · Produção</span>
+                        <div style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); height: 200px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-file-invoice" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Kortex Fiscal — Emissão NFS-e Multi-Tenant</h3>
+                        <p>Sistema completo de emissão de notas fiscais eletrônicas integrado à SEFAZ. Geração de XML, envelopamento SOAP, DANFE e tratamento de retornos/rejeições.</p>
+                        <div class="tech-stack">
+                            <span>Node.js</span><span>Express</span><span>PostgreSQL</span><span>ACBrMonitor</span><span>Docker</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/neverleans/kortex-fiscal" target="_blank" class="btn-sm"><i class="fab fa-github"></i> Ver Código</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card glass-card reveal">
+                    <div class="project-image">
+                        <span class="project-badge">Desktop App</span>
+                        <div style="background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%); height: 200px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-desktop" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>DuplaDesk — Software de Acesso Remoto</h3>
+                        <p>Alternativa ao AnyDesk desenvolvida do zero. Electron + WebRTC com suporte a multi-monitor, transferência de arquivos, chat integrado, gravação de sessão.</p>
+                        <div class="tech-stack">
+                            <span>Electron</span><span>WebRTC</span><span>Socket.io</span><span>Node.js</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/neverleans/dupladesk" target="_blank" class="btn-sm"><i class="fab fa-github"></i> Ver Código</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card glass-card reveal">
+                    <div class="project-image">
+                        <span class="project-badge">Framework</span>
+                        <div style="background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); height: 200px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-shopping-cart" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>PlugStore — Framework E-commerce</h3>
+                        <p>Framework headless para e-commerce brasileiro com Pix integrado (CRC-16), WhatsApp checkout, 50+ temas profissionais e PWA offline. Publicação npm.</p>
+                        <div class="tech-stack">
+                            <span>React</span><span>TypeScript</span><span>TailwindCSS</span><span>PWA</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/neverleans/plug-store" target="_blank" class="btn-sm"><i class="fab fa-github"></i> Ver Código</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Projetos menores -->
+            <div class="projects-grid-side">
+
+                <div class="project-card glass-card reveal">
+                    <div class="project-image">
+                        <span class="project-badge">AI-Powered</span>
+                        <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); height: 150px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-chart-line" style="font-size: 3rem; color: white;"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Kapimind — Plataforma de Investimentos com IA</h3>
+                        <p>Alertas 24/7, calculadoras, IR automático, VaR/Monte Carlo.</p>
+                        <div class="tech-stack">
+                            <span>Next.js</span><span>NestJS</span><span>PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card glass-card reveal">
+                    <div class="project-image">
+                        <span class="project-badge">Open Source</span>
+                        <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); height: 150px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-vote-yea" style="font-size: 3rem; color: white;"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Observatório Eleitoral 2026</h3>
+                        <p>Plataforma cívica com dados TSE, simulador de urna, WCAG AAA.</p>
+                        <div class="tech-stack">
+                            <span>React</span><span>TypeScript</span><span>WCAG</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card glass-card reveal">
+                    <div class="project-image">
+                        <span class="project-badge">Open Source</span>
+                        <div style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); height: 150px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-leaf" style="font-size: 3rem; color: white;"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Calculadora de Impacto Ambiental</h3>
+                        <p>Calculadora interativa para estimar impacto ambiental.</p>
+                        <div class="tech-stack">
+                            <span>JavaScript</span><span>HTML</span><span>CSS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/neverleans/calculadora-de-impacto-ambiental" target="_blank" class="btn-sm btn-outline-sm"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── EXPERIÊNCIA ───────────────────────────────────────────── -->
+    <section id="experience" class="section-padding bg-darker">
+        <div class="container">
+            <h2 class="section-title reveal">Minha <span>Jornada</span></h2>
+            <div class="timeline">
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Nov 2025 - Atual</div>
+                    <div class="timeline-content glass-card">
+                        <h3>Full Stack Developer Sênior <span class="badge-atual">atual</span></h3>
+                        <h4 style="color:var(--primary);font-size:1rem;margin-bottom:10px;">DuplaFace Sistemas — Remoto</h4>
+                        <p>Desenvolvimento de sistemas SaaS de alta complexidade: plataforma multi-tenant de atendimento WhatsApp com automação de IA, sistema de emissão NF-e integrado à SEFAZ, dashboard ERP em tempo real e software de acesso remoto.</p>
+                        <div class="tech-stack" style="margin-top:10px;">
+                            <span>Next.js</span><span>NestJS</span><span>React</span><span>Docker</span><span>Redis</span><span>Socket.io</span><span>Electron</span><span>PostgreSQL</span><span>MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Fev 2024 - Out 2025</div>
+                    <div class="timeline-content glass-card">
+                        <h3>Freelancer Full Stack</h3>
+                        <h4 style="color:var(--primary);font-size:1rem;margin-bottom:10px;">Autônomo — Remoto</h4>
+                        <p>Desenvolvimento de sistemas web completos sob demanda para clientes diversos — da concepção ao deploy em produção.</p>
+                        <div class="tech-stack" style="margin-top:10px;">
+                            <span>React</span><span>Laravel</span><span>Node.js</span><span>MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Ago 2020 - Jan 2024</div>
+                    <div class="timeline-content glass-card">
+                        <h3>Full Stack Developer</h3>
+                        <h4 style="color:var(--primary);font-size:1rem;margin-bottom:10px;">Sellentt — Guaxupé, MG</h4>
+                        <p>Plataforma SaaS ERP/CRM B2B para médias e grandes empresas. Evolução do módulo de CRM com funil de vendas, marketing automatizado, disparo de e-mails e relatórios de campanhas.</p>
+                        <div class="tech-stack" style="margin-top:10px;">
+                            <span>Angular</span><span>TypeScript</span><span>Laravel</span><span>PHP</span><span>Node.js</span><span>MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2019 - Jul 2020</div>
+                    <div class="timeline-content glass-card">
+                        <h3>Estagiário de TI</h3>
+                        <h4 style="color:var(--primary);font-size:1rem;margin-bottom:10px;">Sellentt — Guaxupé, MG</h4>
+                        <p>Suporte técnico, automações internas e colaboração em projetos de desenvolvimento web.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CONTATO ───────────────────────────────────────────────── -->
+    <section id="contact" class="section-padding">
+        <div class="container contact-wrapper">
+            <div class="contact-info reveal">
+                <h2 class="section-title" style="text-align:left;">Vamos <span>Conversar?</span></h2>
+                <p>Estou disponível para novos projetos, oportunidades CLT/PJ ou freelas. Fale comigo!</p>
+
+                <div class="info-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <div>
+                        <h4>WhatsApp</h4>
+                        <p>+55 (35) 99132-3868</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="far fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>lucasventavele@hotmail.com</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fab fa-linkedin"></i>
+                    <div>
+                        <h4>LinkedIn</h4>
+                        <a href="https://linkedin.com/in/lucas-ventavele-ribeiro" target="_blank" style="color:var(--primary);">linkedin.com/in/lucas-ventavele-ribeiro</a>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fab fa-github"></i>
+                    <div>
+                        <h4>GitHub</h4>
+                        <a href="https://github.com/neverleans" target="_blank" style="color:var(--primary);">github.com/neverleans</a>
+                    </div>
+                </div>
+            </div>
+
+            <form class="contact-form glass-card reveal" action="https://formsubmit.co/lucasventavele@hotmail.com" method="POST">
+                <input type="hidden" name="_subject" value="Contato do Portfolio">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Seu Nome" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Seu Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" rows="5" placeholder="Sua Mensagem" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar Mensagem <i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Lucas Ventavele Ribeiro — Full Stack Developer Sênior</p>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/lucas-ventavele-ribeiro" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/neverleans" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://wa.me/5535991323868" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
