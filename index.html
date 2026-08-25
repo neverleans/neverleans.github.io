@@ -30,6 +30,17 @@
             text-transform: uppercase;
             z-index: 2;
         }
+
+        /* Badge para projetos comerciais */
+        .badge-comercial {
+            background: var(--secondary) !important;
+        }
+
+        /* Badge para projetos em desenvolvimento */
+        .badge-dev {
+            background: #f59e0b !important;
+        }
+
         .project-image { position: relative; }
 
         /* Skills com ícone de categoria + cor por grupo */
@@ -50,7 +61,7 @@
             vertical-align: middle;
         }
 
-        /* Projetos grid 2+2 */
+        /* Projetos grid 2 colunas */
         .projects-grid-main { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
         .projects-grid-side { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 30px; }
 
@@ -98,6 +109,89 @@
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.4; }
+        }
+
+        /* Botões de projeto */
+        .project-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-sm {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            background: var(--primary);
+            color: var(--bg-main);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-sm:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 189, 0.3);
+        }
+
+        .btn-outline-sm {
+            background: transparent;
+            border: 1px solid var(--border-glass);
+            color: var(--text-light);
+        }
+
+        .btn-outline-sm:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Botão desabilitado */
+        .btn-disabled {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-glass);
+            color: var(--text-gray);
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Indicador de projeto privado */
+        .private-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            margin-top: 8px;
+        }
+
+        /* Seção de projetos comerciais */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 50px 0 30px;
+        }
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-glass);
+        }
+        .section-divider span {
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
     </style>
 </head>
@@ -209,15 +303,15 @@
     <!-- ── PROJETOS ──────────────────────────────────────────────── -->
     <section id="projects" class="section-padding">
         <div class="container">
-            <h2 class="section-title reveal">Projetos em <span>Destaque</span></h2>
-            <p class="section-subtitle reveal">Sistemas que desenvolvi do zero — da arquitetura ao deploy.</p>
+            <h2 class="section-title reveal">Projetos <span> Comerciais</span></h2>
+            <p class="section-subtitle reveal">Sistemas desenvolvidos para empresas — código sob propriedade intelectual.</p>
 
-            <!-- Projetos principais (grandes) -->
+            <!-- Projetos comerciais -->
             <div class="projects-grid-main">
 
                 <div class="project-card glass-card reveal">
                     <div class="project-image">
-                        <span class="project-badge">SaaS · Produção</span>
+                        <span class="project-badge badge-comercial">Comercial</span>
                         <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 200px; display: flex; align-items: center; justify-content: center;">
                             <i class="fab fa-whatsapp" style="font-size: 4rem; color: white;"></i>
                         </div>
@@ -229,35 +323,20 @@
                             <span>React</span><span>tRPC</span><span>NestJS</span><span>MySQL</span><span>Redis</span><span>Docker</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/neverleans/nexus" target="_blank" class="btn-sm"><i class="fab fa-github"></i> Ver Código</a>
+                            <a href="mailto:nexus@duplafacesistemas.com" class="btn-sm"><i class="fas fa-external-link-alt"></i> Solicitar Demo</a>
+                            <span class="btn-sm btn-disabled" title="Código proprietário"><i class="fas fa-lock"></i> Código</span>
+                        </div>
+                        <div class="private-indicator">
+                            <i class="fas fa-building"></i> DuplaFace Sistemas — Projeto Comercial
                         </div>
                     </div>
                 </div>
 
                 <div class="project-card glass-card reveal">
                     <div class="project-image">
-                        <span class="project-badge">SaaS · Produção</span>
-                        <div style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); height: 200px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-file-invoice" style="font-size: 4rem; color: white;"></i>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Kortex Fiscal — Emissão NFS-e Multi-Tenant</h3>
-                        <p>Sistema completo de emissão de notas fiscais eletrônicas integrado à SEFAZ. Geração de XML, envelopamento SOAP, DANFE e tratamento de retornos/rejeições.</p>
-                        <div class="tech-stack">
-                            <span>Node.js</span><span>Express</span><span>PostgreSQL</span><span>ACBrMonitor</span><span>Docker</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/neverleans/kortex-fiscal" target="_blank" class="btn-sm"><i class="fab fa-github"></i> Ver Código</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card glass-card reveal">
-                    <div class="project-image">
-                        <span class="project-badge">Desktop App</span>
+                        <span class="project-badge badge-comercial">Comercial</span>
                         <div style="background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%); height: 200px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-desktop" style="font-size: 4rem; color: white;"></i>
+                            <i class="fas fa-headset" style="font-size: 4rem; color: white;"></i>
                         </div>
                     </div>
                     <div class="project-info">
@@ -267,38 +346,74 @@
                             <span>Electron</span><span>WebRTC</span><span>Socket.io</span><span>Node.js</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/neverleans/dupladesk" target="_blank" class="btn-sm"><i class="fab fa-github"></i> Ver Código</a>
+                            <a href="https://helpdesk.duplafacesistemas.com" target="_blank" class="btn-sm"><i class="fas fa-external-link-alt"></i> Ver Demo</a>
+                            <span class="btn-sm btn-disabled" title="Código proprietário"><i class="fas fa-lock"></i> Código</span>
+                        </div>
+                        <div class="private-indicator">
+                            <i class="fas fa-building"></i> DuplaFace Sistemas — Projeto Comercial
                         </div>
                     </div>
                 </div>
 
                 <div class="project-card glass-card reveal">
                     <div class="project-image">
-                        <span class="project-badge">Framework</span>
+                        <span class="project-badge badge-comercial">Comercial</span>
+                        <div style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); height: 200px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-file-invoice-dollar" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Kortex Fiscal — Emissão NFS-e Multi-Tenant</h3>
+                        <p>Sistema completo de emissão de notas fiscais eletrônicas integrado à SEFAZ. Geração de XML, envelopamento SOAP, DANFE e tratamento de retornos/rejeições.</p>
+                        <div class="tech-stack">
+                            <span>Node.js</span><span>Express</span><span>PostgreSQL</span><span>ACBrMonitor</span><span>Docker</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="mailto:contato@duplafacesistemas.com" class="btn-sm"><i class="fas fa-external-link-alt"></i> Solicitar Demo</a>
+                            <span class="btn-sm btn-disabled" title="Código proprietário"><i class="fas fa-lock"></i> Código</span>
+                        </div>
+                        <div class="private-indicator">
+                            <i class="fas fa-building"></i> DuplaFace Sistemas — Projeto Comercial
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card glass-card reveal">
+                    <div class="project-image">
+                        <span class="project-badge badge-dev">Em Breve</span>
                         <div style="background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); height: 200px; display: flex; align-items: center; justify-content: center;">
                             <i class="fas fa-shopping-cart" style="font-size: 4rem; color: white;"></i>
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3>PlugStore — Framework E-commerce</h3>
-                        <p>Framework headless para e-commerce brasileiro com Pix integrado (CRC-16), WhatsApp checkout, 50+ temas profissionais e PWA offline. Publicação npm.</p>
+                        <h3>DuplaSales — Sistema de Vendas</h3>
+                        <p>Sistema completo de gestão de vendas com PDV, controle de estoque, relatórios financeiros e integração com ERP. Em desenvolvimento.</p>
                         <div class="tech-stack">
-                            <span>React</span><span>TypeScript</span><span>TailwindCSS</span><span>PWA</span>
+                            <span>React</span><span>NestJS</span><span>MySQL</span><span>Docker</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/neverleans/plug-store" target="_blank" class="btn-sm"><i class="fab fa-github"></i> Ver Código</a>
+                            <a href="mailto:contato@duplafacesistemas.com" class="btn-sm"><i class="fas fa-clock"></i> Em Breve</a>
+                            <span class="btn-sm btn-disabled" title="Em desenvolvimento"><i class="fas fa-lock"></i> Código</span>
+                        </div>
+                        <div class="private-indicator">
+                            <i class="fas fa-building"></i> DuplaFace Sistemas — Em Desenvolvimento
                         </div>
                     </div>
                 </div>
 
             </div>
 
-            <!-- Projetos menores -->
+            <!-- Divisor -->
+            <div class="section-divider">
+                <span><i class="fas fa-code"></i> Projetos Open Source</span>
+            </div>
+
+            <!-- Projetos open source -->
             <div class="projects-grid-side">
 
                 <div class="project-card glass-card reveal">
                     <div class="project-image">
-                        <span class="project-badge">AI-Powered</span>
+                        <span class="project-badge">Open Source</span>
                         <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); height: 150px; display: flex; align-items: center; justify-content: center;">
                             <i class="fas fa-chart-line" style="font-size: 3rem; color: white;"></i>
                         </div>
@@ -308,6 +423,9 @@
                         <p>Alertas 24/7, calculadoras, IR automático, VaR/Monte Carlo.</p>
                         <div class="tech-stack">
                             <span>Next.js</span><span>NestJS</span><span>PostgreSQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/neverleans/kapimind" target="_blank" class="btn-sm"><i class="fab fa-github"></i> Ver Código</a>
                         </div>
                     </div>
                 </div>
@@ -324,6 +442,28 @@
                         <p>Plataforma cívica com dados TSE, simulador de urna, WCAG AAA.</p>
                         <div class="tech-stack">
                             <span>React</span><span>TypeScript</span><span>WCAG</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/neverleans/observatorio-eleitoral" target="_blank" class="btn-sm"><i class="fab fa-github"></i> Ver Código</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card glass-card reveal">
+                    <div class="project-image">
+                        <span class="project-badge">Open Source</span>
+                        <div style="background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); height: 150px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-shopping-cart" style="font-size: 3rem; color: white;"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>PlugStore — Framework E-commerce</h3>
+                        <p>Framework headless para e-commerce brasileiro com Pix, WhatsApp checkout, 50+ temas.</p>
+                        <div class="tech-stack">
+                            <span>React</span><span>TypeScript</span><span>TailwindCSS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/neverleans/plug-store" target="_blank" class="btn-sm"><i class="fab fa-github"></i> Ver Código</a>
                         </div>
                     </div>
                 </div>
@@ -342,7 +482,7 @@
                             <span>JavaScript</span><span>HTML</span><span>CSS</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/neverleans/calculadora-de-impacto-ambiental" target="_blank" class="btn-sm btn-outline-sm"><i class="fab fa-github"></i> Code</a>
+                            <a href="https://github.com/neverleans/calculadora-de-impacto-ambiental" target="_blank" class="btn-sm"><i class="fab fa-github"></i> Ver Código</a>
                         </div>
                     </div>
                 </div>
