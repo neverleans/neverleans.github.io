@@ -204,12 +204,68 @@ ul { list-style: none; }
 .nav-links a:hover { color: var(--primary); }
 .nav-links a:hover::after { width: 100%; }
 
-.language-toggle {
-    color: var(--text-light);
-    font-weight: bold;
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.lang-switcher {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.04);
     border: 1px solid var(--border-glass);
-    padding: 5px 15px;
+    border-radius: 30px;
+    padding: 3px 6px;
+    gap: 4px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.lang-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-gray);
+    font-size: 0.78rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    padding: 4px 10px;
     border-radius: 20px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.lang-btn:hover {
+    color: var(--text-light);
+}
+
+.lang-btn.active {
+    background: var(--primary);
+    color: var(--bg-main);
+    font-weight: 700;
+    box-shadow: 0 0 12px rgba(0, 255, 189, 0.35);
+}
+
+.lang-divider {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 0.75rem;
+    user-select: none;
+}
+
+.github-nav-link {
+    font-size: 1.3rem;
+    color: var(--text-light);
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.github-nav-link:hover {
+    color: var(--primary);
+    transform: translateY(-2px);
 }
 
 /* --- Hero Section --- */
